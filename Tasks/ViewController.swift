@@ -28,10 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet var table: UITableView!
     
+    private let realm = try! Realm()
     private var data = [TaskItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        data = realm.objects(TaskItem.self).map({ $0 })
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.delegate = self
         table.dataSource = self
@@ -52,5 +54,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         // Open the screen where we can see item info and delete
+    }
+    
+    @IBAction func didTapAddButton() {
+        guard let vc = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else {
+            return
+        }
+        vc.completionHandler = { [weak self] in
+            self?.refresh()
+        }
+        vc.title = "New Item"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func refresh() {
+        data = realm.objects(TaskItem.self).map({ $0 })
+        table.reloadData()
     }
 }

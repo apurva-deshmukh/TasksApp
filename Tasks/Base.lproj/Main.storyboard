@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tasks-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GjT-rZ-mVT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -29,7 +29,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iYV-Vt-tHp"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="iYV-Vt-tHp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="voE-Y6-h0F">
+                            <connections>
+                                <action selector="didTapAddButton" destination="BYZ-38-t0r" id="8QO-Kd-yj1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="GjT-rZ-mVT" id="cAT-zh-qPp"/>
                     </connections>
@@ -43,8 +49,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cn5-eP-UtV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NT3-Vu-tPJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="NT3-Vu-tPJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -55,6 +61,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpF-Ci-Ywm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Entry View Controller-->
+        <scene sceneID="BWr-RZ-RHo">
+            <objects>
+                <viewController storyboardIdentifier="entry" id="dO5-cj-7Y7" customClass="EntryViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c5F-z2-zz5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLN-Np-EAf">
+                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="w1h-KM-M1N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZUW-Lb-Wbt">
+                                <rect key="frame" x="0.0" y="166" width="414" height="696"/>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fLN-Np-EAf" firstAttribute="leading" secondItem="Sol-mE-vpy" secondAttribute="leading" constant="20" id="CGK-mf-1cD"/>
+                            <constraint firstItem="ZUW-Lb-Wbt" firstAttribute="trailing" secondItem="Sol-mE-vpy" secondAttribute="trailing" id="Caa-eN-NjQ"/>
+                            <constraint firstItem="Sol-mE-vpy" firstAttribute="bottom" secondItem="ZUW-Lb-Wbt" secondAttribute="bottom" id="Pi1-Xr-1jq"/>
+                            <constraint firstItem="Sol-mE-vpy" firstAttribute="trailing" secondItem="fLN-Np-EAf" secondAttribute="trailing" constant="20" id="eA8-KU-Chf"/>
+                            <constraint firstItem="ZUW-Lb-Wbt" firstAttribute="leading" secondItem="Sol-mE-vpy" secondAttribute="leading" id="ezJ-We-kge"/>
+                            <constraint firstItem="ZUW-Lb-Wbt" firstAttribute="top" secondItem="fLN-Np-EAf" secondAttribute="bottom" constant="50" id="gNQ-gx-fw8"/>
+                            <constraint firstItem="fLN-Np-EAf" firstAttribute="top" secondItem="Sol-mE-vpy" secondAttribute="top" constant="20" id="xwF-dU-BYN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sol-mE-vpy"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="ZUW-Lb-Wbt" id="dzC-9E-qH5"/>
+                        <outlet property="textField" destination="fLN-Np-EAf" id="wSK-Cr-jT0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPS-1J-JQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932" y="139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bbK-GF-7hr">
+            <objects>
+                <viewController id="oeH-8k-B1t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OAA-hg-Yi1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="f3l-Kg-c5F"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FE-Ns-faQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2777" y="139"/>
         </scene>
     </scenes>
 </document>
