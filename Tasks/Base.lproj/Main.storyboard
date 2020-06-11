@@ -103,16 +103,48 @@
             </objects>
             <point key="canvasLocation" x="1932" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--View View Controller-->
         <scene sceneID="bbK-GF-7hr">
             <objects>
-                <viewController id="oeH-8k-B1t" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="view" id="oeH-8k-B1t" customClass="ViewViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OAA-hg-Yi1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpo-MZ-tFG">
+                                <rect key="frame" x="20" y="64" width="374" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="pmP-No-D4g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M60-jS-078">
+                                <rect key="frame" x="20" y="144" width="374" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="afJ-Zg-vEz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M60-jS-078" firstAttribute="top" secondItem="kpo-MZ-tFG" secondAttribute="bottom" constant="10" id="BTY-0L-iYY"/>
+                            <constraint firstItem="kpo-MZ-tFG" firstAttribute="top" secondItem="f3l-Kg-c5F" secondAttribute="top" constant="20" id="CUT-2X-HLw"/>
+                            <constraint firstItem="f3l-Kg-c5F" firstAttribute="trailing" secondItem="M60-jS-078" secondAttribute="trailing" constant="20" id="Qrk-eQ-BSh"/>
+                            <constraint firstItem="kpo-MZ-tFG" firstAttribute="leading" secondItem="f3l-Kg-c5F" secondAttribute="leading" constant="20" id="Taq-iL-btV"/>
+                            <constraint firstItem="M60-jS-078" firstAttribute="leading" secondItem="f3l-Kg-c5F" secondAttribute="leading" constant="20" id="k37-gK-qYs"/>
+                            <constraint firstItem="f3l-Kg-c5F" firstAttribute="trailing" secondItem="kpo-MZ-tFG" secondAttribute="trailing" constant="20" id="qEL-fc-G2o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f3l-Kg-c5F"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="M60-jS-078" id="A7J-jB-uAp"/>
+                        <outlet property="itemLabel" destination="kpo-MZ-tFG" id="c3g-fW-sHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FE-Ns-faQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
